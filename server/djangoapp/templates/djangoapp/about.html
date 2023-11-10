@@ -1,24 +1,213 @@
 {% extends 'base_url.html' %}
 
 {% block content %}
-    <h1 class="skeleton-heading">Car Dealership Reviews: About Us</h1>
-        <div class="p-4 justify-content-center">
-            <p>
-                Welcome to Best Cars, 
-                home to the best cars in North America. 
-                We sell domestic and imported cars at reasonable prices.
-            </p>
-            </br>
-            <p>
-                Lithia Motors revealed it had sold 271,596 new vehicles in 2022, beating the nation’s longtime frontrunner AutoNation by 40,000 units.
-                In Q4 alone, Lithia made 68,159 new vehicle sales, a 5.2% year-over-year increase. This performance allowed it to surpass its 2021 annual sales by 4.2%. AutoNation also experienced a successful holiday season, improving its quarterly new vehicle performance by 4.3%, but falling 8,085 units short of its competitor.
-                This is the first time since 1997 that AutoNation has failed to earn the No. 1 spot in U.S. vehicle sales. Although part of this change is attributable to its declining vehicle sales, which dropped 12% in 2022 to 229,971, an even more important factor is the dealer group’s slowing acquisitions efforts. The company, which was considered to be the nation’s largest retailer until last month, acquired 20 locations in 2021, but only four in 2022.
-                In comparison, Lithia Motors has continuously expanded its dealership network without falter since 2014, acquiring 32 locations in 2022 alone. With over 290 storefronts, it now claims to have surpassed AutoNation in size, making it the biggest dealer group in the U.S.
-                However, this growth does not come without cost. Speaking to analysts shortly after Lithia Motors published its Q4 report, CEO Bryannas DeBoer noted that the company had decided “to utilize the majority of its cash flows towards acquisitions rather than redistributing them primarily towards shareholders or paying down debt.” Although the brand’s newfound size and competitive edge are impressive, the long term sustainability of their growth is doubtful.
-                Predictions for the 2023 car market are intentionally ambiguous, as analysts remain unsure whether logistical improvements will normalize the market, or if a recession and looming affordability crisis will prevent an economic recovery. Whether Lithia Motors and AutoNation retain their positions into 2024 will depend on their ability to adapt to the changing business. 
-            </p>
-            </br>
-            <p><a style="color:black; font-weight: bold;" href="{% url 'djangoapp:contact' %}">Contact us for further information!</a></p>
-    </div>    
+                    <h1>Car Dealership Reviews</h1>
+                    <p>Welcome to Best Cars, 
+                        home to the best cars in North America. 
+                        We sell domestic and imported cars at reasonable prices.</p>
+                </div>
+                <div class="align-self-center">
+                    <!--<a href="./#reservetable"><button type="submit" class="btn btn-sm bg-form-color btn-warning" 
+                        data-toggle="tooltip" data-html="true"
+                        title="Or call us at <br><strong>+852 123456789</strong>"
+                        data-placement="bottom">
+                        Reserve a table
+                    </button></a>-->
+                </div>
+            </div>
+        </div>
+    </header>
 
-{% endblock %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm">
+               <h3>About Us</h3>
+               <hr>
+            </div>
+        </div>
+
+        <div class="row row-content">
+            <div class="col-12 col-sm-6">
+                <h2>Our History</h2>
+                <p>
+                    Car Dealers revealed it had sold 271,596 new vehicles in 2022, beating the nation’s longtime frontrunner AutoNation by 40,000 units.
+                    In Q4 alone, Car Dealer made 68,159 new vehicle sales, a 5.2% year-over-year increase. This performance allowed it to surpass its 2021 annual sales by 4.2%. AutoNation also experienced a successful holiday season, improving its quarterly new vehicle performance by 4.3%, but falling 8,085 units short of its competitor.
+                    This is the first time since 1997 that AutoNation has failed to earn the No. 1 spot in U.S. vehicle sales. Although part of this change is attributable to its declining vehicle sales, which dropped 12% in 2022 to 229,971, an even more important factor is the dealer group’s slowing acquisitions efforts. The company, which was considered to be the nation’s largest retailer until last month, acquired 20 locations in 2021, but only four in 2022.
+                    In comparison, Car Dealer has continuously expanded its dealership network without falter since 2014, acquiring 32 locations in 2022 alone. With over 290 storefronts, it now claims to have surpassed AutoNation in size, making it the biggest dealer group in the U.S.
+                    However, this growth does not come without cost. Speaking to analysts shortly after Car Dealer published its Q4 report, CEO Bryannas DeBoer noted that the company had decided “to utilize the majority of its cash flows towards acquisitions rather than redistributing them primarily towards shareholders or paying down debt.” Although the brand’s newfound size and competitive edge are impressive, the long term sustainability of their growth is doubtful.
+                    Predictions for the 2023 car market are intentionally ambiguous, as analysts remain unsure whether logistical improvements will normalize the market, or if a recession and looming affordability crisis will prevent an economic recovery. Whether Car Dealer and AutoNation retain their positions into 2024 will depend on their ability to adapt to the changing business. 
+                </p>
+            </div>
+            <div class="col-sm">
+                <div class="card">
+                    <h3 class="card-header bg-primary text-white">Facts At a Glance</h3>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-6">Started</dt>
+                            <dd class="col-6">3rd Feb 2013</dd>
+                            <dt class="col-6">Major Stake Holder</dt>
+                            <dd class="col-6">HK Fine Food Inc.</dd>
+                            <dt class="col-6">Last Year's Turnover</dt>
+                            <dd class="col-6">$1.250,375</dd>
+                            <dt class="col-6">Employees</dt>
+                            <dd class="col-6">40</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card card-body bg-light">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">Perfect customer service, Honest and Helpful, Excellent Service.</p>
+                        <footer class="blockquote-footer">Yogi Berra,
+                            <cite title="Source Title">The Wit and Wisdom of Yogi Berra, P. Pepe, Diversion Books, 2016</cite>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row row-content">
+            <div class="col col-sm col-md">
+                <h2>Corporate Leadership</h2>
+
+                    <!---Accordions version-->
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="peterhead">
+                                <h3 class="mb-0">
+                                    <a data-toggle="collapse" data-target="#peter"> 
+                                        Peter Frank <small>Chief Executive Officer</small>
+                                    </a>
+                                </h3>
+                            </div>
+                                <div role="tabpanel" class="collapse show" id="peter" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p class="d-none d-lg-block d-print-block">Our CEO, Peter, credits his hardworking Far East Markets. He undertook the arduous journey to the shores of America with the intention of giving their children the best future. His whole and deep experience comes from a very hardworking and travelling cross many Countries in the world. <em>Peter joined Car Dealers as a marketing manager in 1997 with several other Harvard MBA colleagues.</em> Peter worked for five years after graduation before entering his MBA program as a project manager for a collectibles company, MBI, and then he and an MBI colleague started a company and closed it down.</p>
+                                    </div>
+                                </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="mb-0">
+                                    <a data-toggle="collapse" data-target="#john" >
+                                        John Johnson <small>Chief Financial Officer</small>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div role="tabpanel" class="collapse" id="john" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p class="d-none d-lg-block d-print-block">Our CFO, John, as he is affectionately referred to by his colleagues, comes from a long established family tradition in farming and produce. John graduated from college in 1986, he was offered jobs at Intel, Bell Labs, and Andersen Consulting, among others. <em>He first worked at Fitel, a fintech telecommunications start-up, where he was tasked with building a network for international trade.</em></p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="mb-0">
+                                    <a data-toggle="collapse" data-target="#mark">
+                                        Mark Tangerwood <small>Chief Technical Officer</small>
+                                    </a>
+                                </h3>
+                            <div role="tabpanel" class="collapse" id="mark" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p class="d-none d-lg-block d-print-block">graduated from the Hotchkiss School in Lakeville, Connecticut. In 1992, Tuttle earned her bachelor's degree in English from Princeton University, where he studied under Nobel Laureate in Literature Toni Morrison, who described Tuttle as "one of the best students I've ever had in my creative writing classes". <em>After graduating from college, he worked as a research assistant to Morrison for the 1992 novel Jazz.</em></p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" role="tab" id="albertoheader">
+                                <h3 class="mb-0">
+                                    <a data-toggle="collapse" data-target="#alberto">
+                                        Alberto Rango <small>Executive Dealer</small>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div role="tabpanel" class="collapse" id="alberto" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p class="d-none d-lg-block d-print-block">Award winning three-star Dealers Guide with wide International experience having worked closely with whos-who in the vehicle world, he specializes in motorbikes environment thorughout MotoGP experiences.</p>
+                                </div> 
+                            </div>
+                        </div>                            
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-content justify-content-center">
+                <div class="col-auto">
+                    <h2>Facts &amp; Figures</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <th>2013</th>
+                                    <th>2014</th>
+                                    <th>2015</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>Employees</th>
+                                    <td>15</td>
+                                    <td>30</td>
+                                    <td>40</td>
+                                </tr>
+                                <tr>
+                                    <th>Guests Served</th>
+                                    <td>15000</td>
+                                    <td>45000</td>
+                                    <td>100,000</td>
+                                </tr>
+                                <tr>
+                                    <th>Special Events</th>
+                                    <td>3</td>
+                                    <td>20</td>
+                                    <td>45</td>
+                                </tr>
+                                <tr>
+                                    <th>Annual Turnover</th>
+                                    <td>$251,325</td>
+                                    <td>$1,250,375</td>
+                                    <td>~$3,000,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+                <div class="col-12 col-sm-3"></div>
+            </div>
+
+            </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row justify-content-center">             
+                <div class="col-4 offset-1 col-sm-2">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'djangoapp:index' %}">Home</a></li>
+                        <li><a href="{% url 'djangoapp:contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-7 col-sm-5">
+                    <h5>Our Address</h5>
+                    <address>
+		              121, Clear Water Bay Road<br>
+		              Clear Water Bay<br>
+		              Medford, Oregon<br>
+		              Phone: 31264597852<br>
+		              Email: <a href="mailto:info.dealer@mailing.com">info.dealer@mailing.com</a>
+		           </address>
+                </div>
+           </div>
+           <div class="row justify-content-center">             
+                <div class="col-auto">
+                    <p>© Copyright 2018 Car Dealership Reviews</p>
+                </div>
+           </div>
+        </div>
+    {% endblock %}
