@@ -1,4 +1,5 @@
 from cloudant.client import Cloudant
+from cloudant.error import CloudantException
 from cloudant.query import Query
 from flask import Flask, jsonify, request
 import atexit
