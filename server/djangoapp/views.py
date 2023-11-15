@@ -91,7 +91,7 @@ def registration_request(request):
 # Update the `get_dealerships` view to render the index page with a list of dealerships
 def get_dealerships(request):
     if request.method == "GET":
-        url = "https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/37913300-cd75-4515-9fba-6454c1654ffa/dealerships/dealer-get"
+        url = "https://us-south.functions.appdomain.cloud/api/v1/web/7468b647-99b2-47b4-bf88-ebe5b54888fd/dealership-package/get-dealership"
         # Get dealers from the URL
         dealerships = get_dealers_from_cf(url)
         # Concat all dealer's short name
