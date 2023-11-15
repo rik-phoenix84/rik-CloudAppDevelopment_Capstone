@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from django.utils.timezone import now
 
@@ -13,7 +14,7 @@ class CarMake(models.Model):
     name = models.CharField(null=False, max_length=30, default='Bmw')
     description = models.CharField(null=False, max_length=300, default='Freude am Fahren')
     def __str__(self):
-        return "Name: " + self.name + "," + \
+        return "Name: " + self.name + ", " + \
                "Description: " + self.description
 
 
@@ -36,8 +37,18 @@ class CarModel(models.Model):
     carmake = models.ForeignKey(CarMake, null= True, on_delete=models.CASCADE)
     name = models.CharField(null= False, max_length=30, default='Bmw Serie 1')
     dealer_id = models.IntegerField(null=True)
-    car_type = models.CharField(null= False, max_length=20, choices= CAR_CHOICES, default=BERLINA)
-    year = models.DateField(null= True)
+    car_type = models.CharField(
+        null=False, max_length=15, choices=CAR_CHOICES, default=BERLINA)
+
+    YEAR_SELECT = []
+    for r in range(1969, (datetime.datetime.now().year+1)):
+        YEAR_SELECT.append((r, r))
+
+    year = models.IntegerField(
+        ('year'), choices=YEAR_SELECT, default=datetime.datetime.now().year)
+
+    def __str__(self):
+        return self.name + ", " + str(self.year) + ", " + self._type
 
     def __str__(self):
         return 'Name ' + self.name
