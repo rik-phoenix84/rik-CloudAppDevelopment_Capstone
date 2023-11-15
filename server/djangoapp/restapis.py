@@ -24,7 +24,7 @@ def get_request(url, **kwargs):
     return json_data
 
 # Gets all dealers from the Cloudant DB with the Cloud Function get-dealerships
-def get_dealers_from_cf(url, **kwargs):
+def get_dealers_from_cf(url):
     results = []
     # Call get_request with a URL parameter
     json_result = get_request(url)
