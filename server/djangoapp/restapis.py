@@ -57,3 +57,18 @@ def post_request(url, json_payload, **kwargs):
     print(f"With status code {status_code}")
 
     return response
+
+# Gets a single dealer from the Cloudant DB with the Cloud Function get-dealerships
+# Requires the dealer_id parameter with only a single value
+def get_dealer_by_id(url, dealer_id):
+    # Call get_request with the dealer_id param
+    json_result = get_request(url, dealerId=dealer_id)
+
+    # Create a CarDealer object from response
+    dealer = json_result
+    dealer_obj = CarDealer(address=dealer["address"], city=dealer["city"], full_name=dealer["full_name"],
+                           id=dealer["id"], lat=dealer["lat"], long=dealer["long"],
+                           short_name=dealer["short_name"],
+                           st=dealer["st"], zip=dealer["zip"])
+
+    return dealer_obj
