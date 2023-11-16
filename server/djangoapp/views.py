@@ -107,7 +107,8 @@ def get_dealer_details(request, dealer_id):
     context = {}
     if request.method == "GET":
         #url = 'https://eu-gb.functions.appdomain.cloud/api/v1/web/ee9e9c25-9f2c-4f0d-b259-a3aba7f3f558/dealership-package/get-review'
-        url = "https://riccardoabba-3000.theiadocker-2-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get"
+        #url = "https://riccardoabba-3000.theiadocker-2-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/dealerships/get"
+        url = "https://riccardoabba-5000.theiadocker-2-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/api/get_reviews?id={dealer_id}"
         reviews = get_dealer_reviews_from_cf(url, dealer_id=dealer_id)
         context = {
             "reviews":  reviews, 
