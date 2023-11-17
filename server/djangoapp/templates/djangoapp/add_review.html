@@ -26,15 +26,22 @@
                 </select>
             </div>
             <div class="form-group" data-provide="datepicker">
-                <label for="purchasedate">Select your purchase date:</label>
+                <label for="purchasedate">Select your purchase date (mm/dd/yyyy):</label>
                 <input class="date-own form-control" type="text" name="purchasedate" id="purchasedate">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-    </main>
+            </div>
+            {% if not sentiment_passed %}
+            <div>
+                <h5>Review sentiment was not able to be processed. Make sure to review is not eligible!</h5>
+            </div>
+            {% endif %}
+            </div>
+    </body>
     <script type="text/javascript">
         $('.date-own').datepicker({
-           format: 'dd-mm-yyyy'
+           format: 'mm/dd/yyyy'
          });
    </script>
 
