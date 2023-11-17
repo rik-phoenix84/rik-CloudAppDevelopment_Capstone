@@ -8,19 +8,28 @@ from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from ibm_watson.natural_language_understanding_v1 import Features, SentimentOptions
 
 # Function for making HTTP GET requests
-def get_request(url, **kwargs):
-    print(kwargs)
-    print("GET from {} ".format(url))
-    try:
-        # Call get method of requests library with URL and parameters
-        response = requests.get(url, headers={'Content-Type': 'application/json'},
+def get_request(url, api_key=False, **kwargs):
+    print(f"GET from {url}")
+    if api_key:
+        # Basic authentication GET
+        try:
+            response = requests.get(url, headers={'Content-Type': 'application/json'},
+                                    params=kwargs, auth=HTTPBasicAuth('apikey', api_key))
+        except:
+            print("An error occurred while making GET request. ")
+    else:
+        # No authentication GET
+        try:
+            response = requests.get(url, headers={'Content-Type': 'application/json'},
                                     params=kwargs)
-    except:
-        # If any error occurs
-        print("Network exception occurred")
+        except:
+            print("An error occurred while making GET request. ")
+
+    # Retrieving the response status code and content
     status_code = response.status_code
-    print("With status {} ".format(status_code))
+    print(f"With status {status_code}")
     json_data = json.loads(response.text)
+
     return json_data
 
 # Gets all dealers from the Cloudant DB with the Cloud Function get-dealerships
@@ -60,18 +69,18 @@ def post_request(url, json_payload, **kwargs):
 
 # Gets a single dealer from the Cloudant DB with the Cloud Function get-dealerships
 # Requires the dealer_id parameter with only a single value
-def get_dealer_by_id_from_cf(url, id):
-    json_result = get_request(url, id=id)
-    print({f'JSON Result: {json_result}'})
-    if json_result:
-        dealers = json_result
-        dealer_doc = dealers[0]
-        dealer_obj = CarDealer(address=dealer_doc["address"], city=dealer_doc["city"],
-                                id=dealer_doc["id"], lat=dealer_doc["lat"], long=dealer_doc["long"],  short_name=dealer_doc["short_name"], full_name=dealer_doc["full_name"],
-                                
-                                st=dealer_doc["st"], zip=dealer_doc["zip"])
-    return dealer_obj
+def get_dealer_by_id(url, dealer_id):
+    # Call get_request with the dealer_id param
+    json_result = get_request(url, dealerId=dealer_id)
+    # Create a CarDealer object from response
+    dealer = json_result
+    dealer_details = dealer[0]
+    dealer_obj = CarDealer(address=dealer_details["address"], city=dealer_details["city"], full_name=dealer_details["full_name"],
+                           id=dealer_details["id"], lat=dealer_details["lat"], long=dealer_details["long"],
+                           short_name=dealer_details["short_name"],
+                           st=dealer_details["st"], zip=dealer_details["zip"])
 
+    return dealer_obj
 
 # Gets all dealer reviews for a specified dealer from the Cloudant DB
 # Uses the Cloud Function get_reviews
@@ -126,14 +135,9 @@ def get_dealer_reviews_from_cf(url, dealer_id):
 # Calls the Watson NLU API and analyses the sentiment of a review
 def analyze_review_sentiments(review_text):
     # Watson NLU configuration
-    try:
-        if os.environ['env_type'] == 'PRODUCTION':
-            url = os.environ['WATSON_NLU_URL']
-            api_key = os.environ["WATSON_NLU_API_KEY"]
-    except KeyError:
-        url = config('WATSON_NLU_URL')
-        api_key = config('WATSON_NLU_API_KEY')
-
+    url = "https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/37913300-cd75-4515-9fba-6454c1654ffa"
+    api_key = "x7EoJhfYq2uYc_hYUGI4we0H-uZmJzgTJXrpIGhPyrtd"
+    
     version = '2021-08-01'
     authenticator = IAMAuthenticator(api_key)
     nlu = NaturalLanguageUnderstandingV1(
