@@ -56,14 +56,13 @@ def get_dealers_from_cf(url, **kwargs):
 
 # Function to make post requests
 def post_request(url, json_payload, **kwargs):
-    print(f"POST to {url}") 
+    print(f"POST to {url}")
     try:
-        response = requests.post(url, params = kwargs, payload=json_payload)
+        response = requests.post(url, params=kwargs, json=json_payload)
     except:
-        print("An error occurred with your POST request")
-        
+        print("An error occurred while making POST request. ")
     status_code = response.status_code
-    print(f"With status code {status_code}")
+    print(f"With status {status_code}")
 
     return response
 
