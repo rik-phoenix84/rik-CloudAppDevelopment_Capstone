@@ -56,12 +56,12 @@ def get_dealers_from_cf(url, **kwargs):
 
 # Function to make post requests
 def post_request(url, json_payload, **kwargs):
-    url =  "https://riccardoabba-5000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/api/post_review"
+    url =  "https://riccardoabba-5000.theiadocker-2-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/api/post_review"
     response = requests.post(url, params=kwargs, json=json_payload)
     return response
 
 # Gets a single dealer from the Cloudant DB with the Cloud Function get-dealerships
-# Requires the dealer_id parameter with only a single value
+# Requires the id parameter with only a single value
 def get_dealer_by_id(url, id):
     results = []
 

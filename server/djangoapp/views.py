@@ -138,7 +138,7 @@ def add_review(request, id):
             review_post_url = "https://riccardoabba-5000.theiadocker-2-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/api/post_review"
             review = {
                 "id":id,
-                "time":datetime.utcnow().isoformat(),
+                #"time":datetime.utcnow().isoformat(),
                 "name":request.user.username,  # Assuming you want to use the authenticated user's name
                 "dealership" :id,                
                 "review": request.POST["content"],  # Extract the review from the POST request
