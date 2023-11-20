@@ -56,37 +56,46 @@ def get_dealers_from_cf(url, **kwargs):
 
 # Function to make post requests
 def post_request(url, json_payload, **kwargs):
-    print(f"POST to {url}")
-    try:
-        response = requests.post(url, params=kwargs, json=json_payload)
-    except:
-        print("An error occurred while making POST request. ")
-    status_code = response.status_code
-    print(f"With status {status_code}")
-
+    url =  "https://riccardoabba-5000.theiadocker-3-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/api/post_review"
+    response = requests.post(url, params=kwargs, json=json_payload)
     return response
 
 # Gets a single dealer from the Cloudant DB with the Cloud Function get-dealerships
 # Requires the dealer_id parameter with only a single value
-def get_dealer_by_id(url, dealer_id):
-    # Call get_request with the dealer_id param
-    json_result = get_request(url, dealerId=dealer_id)
-    # Create a CarDealer object from response
-    dealer = json_result
-    dealer_details = dealer[0]
-    dealer_obj = CarDealer(address=dealer_details["address"], city=dealer_details["city"], full_name=dealer_details["full_name"],
-                           id=dealer_details["id"], lat=dealer_details["lat"], long=dealer_details["long"],
-                           short_name=dealer_details["short_name"],
-                           st=dealer_details["st"], zip=dealer_details["zip"])
+def get_dealer_by_id(url, id):
+    results = []
 
-    return dealer_obj
+    # Call get_request with a URL parameter
+    json_result = get_request(url, id=id)
+
+    if json_result:
+        # Get the row list in JSON as dealers
+        dealers = json_result
+        # For each dealer object
+        for dealer in dealers:
+            # Get its content in `doc` object
+            dealer_doc = dealer
+            if dealer_doc["id"] == id:
+                # Create a CarDealer object with values in `doc` object
+                dealer_obj = CarDealer(address=dealer_doc["address"], 
+                                       city=dealer_doc["city"], 
+                                       full_name=dealer_doc["full_name"],
+                                       id=dealer_doc["id"], 
+                                       lat=dealer_doc["lat"], 
+                                       long=dealer_doc["long"],
+                                       short_name=dealer_doc["short_name"],
+                                       st=dealer_doc["st"], 
+                                       zip=dealer_doc["zip"])                    
+                results.append(dealer_obj)
+
+    return results[0]
 
 # Gets all dealer reviews for a specified dealer from the Cloudant DB
 # Uses the Cloud Function get_reviews
-def get_dealer_reviews_from_cf(url, dealer_id):
+def get_dealer_reviews_from_cf(url, id):
     results = []
     # Perform a GET request with the specified dealer id
-    json_result = get_request(url, dealerId=dealer_id)
+    json_result = get_request(url, dealerId=id)
     print("line 82", json_result)
 
     if json_result:
